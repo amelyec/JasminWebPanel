@@ -30,10 +30,10 @@ To run for testing and development:
 ```shell
 ./manage.py runserver
 ```
-This is slower, requires **DEBUG=True**, and is much less secure
+This is slower, requires `DEBUG=True`, and is much less secure
 
 To run on production:
 ```shell
 ./run_cherrypy.py
 ```
-This requires that you run the collectstatic command (see above) and you should have **DEBUG=False**.
+This requires that you run the collectstatic command (see above) and you should have `DEBUG=False`.
