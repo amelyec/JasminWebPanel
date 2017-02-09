@@ -1,17 +1,16 @@
 # JasminWebPanel
-Jasmin Sms Web Interface
-Installation
-Download Extract This folder
+Jasmin SMS Web Interface for Jasmin SMS Gateway
 
-Installing
-
+## Installation
+Download and Extract folder
 We recommend installing in a virtualenv
 
 Install dependencies:
+
 ```shell
 $ pip install -r requirements.pip
 ```
-cd to jasmin_api and run:
+cd to **JasminWebPanel** and run:
 ```shell
 $ ./manage.py migrate 
 $ ./manage.py createsuperuser 
@@ -25,13 +24,16 @@ TELNET_PORT = 8990
 TELNET_USERNAME = 'jcliadmin'
 TELNET_PW = 'jclipwd'
 ```
-Running
+## Running
 
-To run for testing and development: cd JasminWebPanel;./manage.py runserver
-
-This is slower, requires DEBUG=True, and is much less secure
+To run for testing and development: 
+```shell
+./manage.py runserver
+```
+This is slower, requires **DEBUG=True**, and is much less secure
 
 To run on production:
-
-cd JasminWebPanel;run_cherrypy.py
-This requires that you run the collectstatic command (see above) and you should have DEBUG=False
+```shell
+./run_cherrypy.py
+```
+This requires that you run the collectstatic command (see above) and you should have **DEBUG=False**.
