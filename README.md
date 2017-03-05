@@ -1,4 +1,4 @@
-# JasminWebPanel
+# Jasmin Web Panel
 Jasmin SMS Web Interface for Jasmin SMS Gateway
 
 ## Installation
