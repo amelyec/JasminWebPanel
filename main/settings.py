@@ -7,6 +7,8 @@ SECRET_KEY = '76#ff@d_b)_+l$q^1jk$psqp8u@qyq1x!go-v5dfrfs!%r2+_c'
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
+LOGIN_URL = '/'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
