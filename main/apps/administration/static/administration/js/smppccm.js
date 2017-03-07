@@ -20,6 +20,7 @@ $(function(){
 					output += "<td>" + v["cid"] + "</td>";
 					output += "<td>" + v["host"] + "</td>";
 					output += "<td>" + v["port"] + "</td>";
+					output += '<td class="text-center">' + (v["session"] === "BOUND_TRX" ? '<i class="fa fa-circle fa-lg text-success"><i/>':'<i class="fa fa-circle fa-lg text-warning"><i/>') + "</td>";
 					output += "<td>" + v["username"] + "</td>";
 					output += "<td>" + v["password"] + "</td>";
 					output += '<td class="text-center">' +( v["status"] === "started"?'<i class="fa fa-circle fa-lg text-success"><i/>':'<i class="fa fa-circle fa-lg text-default"><i/>') + "</td>";
