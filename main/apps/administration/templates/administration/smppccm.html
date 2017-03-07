@@ -10,6 +10,21 @@
 {% block content %}
 {% include "account/includes/sidebar.html" with item="smppccm" %}
 <div class="main-panel">
+	<nav class="navbar navbar-default navbar-fixed">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">SMPPCCM</a>
+            </div>
+            <div class="collapse navbar-collapse">
+            </div>
+        </div>
+    </nav>
 	<div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -124,7 +139,13 @@
 								</div>
 								<div class="form-group">
 									<label>Log Level</label>
-									<input type="text" name="loglevel" class="form-control" placeholder="Log Level">
+									<select name="loglevel" class="form-control" placeholder="Log Level">
+										<option value="10">DEBUG</option>
+										<option value="20">INFO</option>
+										<option value="30">WARNING</option>
+										<option value="40">ERROR</option>
+										<option value="50">CRITICCAL</option>
+									</select>
 									<span class="help-block">Logging numeric level: 10=DEBUG, 20=INFO, 30=WARNING, 40=ERROR, 50=CRITICCAL</span>
 								</div>
 								<div class="form-group">
@@ -139,7 +160,9 @@
 								</div>
 								<div class="form-group">
 									<label>SSL</label>
-									<input type="text" name="ssl" class="form-control" placeholder="SSL">
+									<select name="ssl" class="form-control" placeholder="SSL">
+										<option>yes</option><option>no</option>
+									</select>
 									<span class="help-block">Activate ssl connection</span>
 								</div>
 								<div class="form-group">
@@ -151,7 +174,7 @@
 									<input type="text" name="password" class="form-control" maxlength="8" placeholder="pass123" required="required">
 								</div>
 								<div class="form-group">
-									<label>bind</label>
+									<label>Bind</label>
 									<select name="bind" class="form-control" placeholder="Bind">
 										<option>transceiver</option><option>receiver</option><option>transmitter</option>
 									</select>
@@ -159,22 +182,22 @@
 								</div>
 								<div class="form-group">
 									<label>Bind To</label>
-									<input type="text" name="bind_to" class="form-control" placeholder="Bind To">
+									<input type="text" name="bind_to" class="form-control" placeholder="Bind To" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">Timeout for response to bind request</span>
 								</div>
 								<div class="form-group">
 									<label>Trx To</label>
-									<input type="text" name="trx_to" class="form-control" placeholder="Trx To">
+									<input type="text" name="trx_to" class="form-control" placeholder="Trx To" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">Maximum time lapse allowed between transactions, after which, the connection is considered as inactive and will reconnect</span>
 								</div>
 								<div class="form-group">
 									<label>Res To</label>
-									<input type="text" name="res_to" class="form-control" placeholder="Res To">
+									<input type="text" name="res_to" class="form-control" placeholder="Res To" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">Timeout for responses to any request PDU</span>
 								</div>
 								<div class="form-group">
 									<label>PDU Red To</label>
-									<input type="text" name="pdu_red_to" class="form-control" placeholder="PDU Red To">
+									<input type="text" name="pdu_red_to" class="form-control" placeholder="PDU Red To" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">Timeout for reading a single PDU, this is the maximum lapse of time between receiving PDU’s header and its complete read, if the PDU reading timed out, the connection is considered as ‘corrupt’ and will reconnect</span>
 								</div>
 								<div class="form-group">
@@ -186,7 +209,7 @@
 								</div>
 								<div class="form-group">
 									<label>Con. Loss Delay</label>
-									<input type="text" name="con_loss_delay" class="form-control" placeholder="Con. Loss Delay">
+									<input type="text" name="con_loss_delay" class="form-control" placeholder="Con. Loss Delay" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">Reconnect delay on connection loss (seconds)</span>
 								</div>
 								<div class="form-group">
@@ -198,7 +221,7 @@
 								</div>
 								<div class="form-group">
 									<label>Con. Fail Delay</label>
-									<input type="text" name="con_fail_delay" class="form-control" placeholder="Con. Fail Delay">
+									<input type="text" name="con_fail_delay" class="form-control" placeholder="Con. Fail Delay" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">Reconnect delay on connection failure (seconds)</span>
 								</div>
 								<div class="form-group">
@@ -206,36 +229,48 @@
 									<input type="text" name="src_addr" class="form-control" placeholder="Src. Addr.">
 									<span class="help-block">Default source adress of each SMS-MT if not set while sending it, can be numeric or alphanumeric, when not defined it will take SMSC default</span>
 								</div>
-								<div class="form-group">
-									<label>Src. TON</label>
-									<input type="text" name="src_ton" class="form-control" placeholder="Src. TON">
-									<span class="help-block">Source address TON setting for the link: 0=Unknown, 1=International, 2=National, 3=Network specific, 4=Subscriber number, 5=Alphanumeric, 6=Abbreviated</span>
-								</div>
 							</div>
 							<div class="col-md-6" style="padding-left:20px;">
 								<div class="form-group">
+									<label>Src. TON</label>
+									<select name="src_ton" class="form-control" placeholder="Src. TON">
+										<option value="0">Unknown</option><option value="1">International</option><option value="2">National</option><option value="3">Network specific</option><option value="4">Subscriber number</option><option value="5">Alphanumeric</option><option value="6">Abbreviated</option>
+									</select>
+									<span class="help-block">Source address TON setting for the link: 0=Unknown, 1=International, 2=National, 3=Network specific, 4=Subscriber number, 5=Alphanumeric, 6=Abbreviated</span>
+								</div>
+								<div class="form-group">
 									<label>Src. NPI</label>
-									<input type="text" name="src_npi" class="form-control" placeholder="Src. NPI">
+									<select name="src_npi" class="form-control" placeholder="Src. NPI">
+										<option value="0">Unknown</option><option value="1">ISDN</option><option value="3">Data</option><option value="4">Telex</option><option value="6">Land mobile</option><option value="8">National</option><option value="9">Private</option><option value="10">Ermes</option><option value="14">Internet</option><option value="18">WAP Client ID</option>
+									</select>
 									<span class="help-block">Source address NPI setting for the link: 0=Unknown, 1=ISDN, 3=Data, 4=Telex, 6=Land mobile, 8=National, 9=Private, 10=Ermes, 14=Internet, 18=WAP Client ID</span>
 								</div>
 								<div class="form-group">
 									<label>Dst. TON</label>
-									<input type="text" name="dst_ton" class="form-control" placeholder="Dst. TON">
+									<select name="dst_ton" class="form-control" placeholder="Dst. TON">
+										<option value="0">Unknown</option><option value="1">International</option><option value="2">National</option><option value="3">Network specific</option><option value="4">Subscriber number</option><option value="5">Alphanumeric</option><option value="6">Abbreviated</option>
+									</select>
 									<span class="help-block">Destination address TON setting for the link: 0=Unknown, 1=International, 2=National, 3=Network specific, 4=Subscriber number, 5=Alphanumeric, 6=Abbreviated</span>
 								</div>
 								<div class="form-group">
 									<label>Dst. NPI</label>
-									<input type="text" name="dst_npi" class="form-control" placeholder="Dst. NPI">
+									<select name="dst_npi" class="form-control" placeholder="Dst. NPI">
+										<option value="0">Unknown</option><option value="1">ISDN</option><option value="3">Data</option><option value="4">Telex</option><option value="6">Land mobile</option><option value="8">National</option><option value="9">Private</option><option value="10">Ermes</option><option value="14">Internet</option><option value="18">WAP Client ID</option>
+									</select>
 									<span class="help-block">Destination address NPI setting for the link: 0=Unknown, 1=ISDN, 3=Data, 4=Telex, 6=Land mobile, 8=National, 9=Private, 10=Ermes, 14=Internet, 18=WAP Client ID</span>
 								</div>
 								<div class="form-group">
 									<label>Bind TON</label>
-									<input type="text" name="bind_ton" class="form-control" placeholder="Bind TON">
+									<select name="bind_ton" class="form-control" placeholder="Bind TON">
+										<option value="0">Unknown</option><option value="1">International</option><option value="2">National</option><option value="3">Network specific</option><option value="4">Subscriber number</option><option value="5">Alphanumeric</option><option value="6">Abbreviated</option>
+									</select>
 									<span class="help-block">Bind address TON setting for the link: 0=Unknown, 1=International, 2=National, 3=Network specific, 4=Subscriber number, 5=Alphanumeric, 6=Abbreviated</span>
 								</div>
 								<div class="form-group">
 									<label>Bind NPI</label>
-									<input type="text" name="bind_npi" class="form-control" placeholder="Bind NPI">
+									<select name="bind_npi" class="form-control" placeholder="Bind NPI">
+										<option value="0">Unknown</option><option value="1">ISDN</option><option value="3">Data</option><option value="4">Telex</option><option value="6">Land mobile</option><option value="8">National</option><option value="9">Private</option><option value="10">Ermes</option><option value="14">Internet</option><option value="18">WAP Client ID</option>
+									</select>
 									<span class="help-block">Bind address NPI setting for the link: 0=Unknown, 1=ISDN, 3=Data, 4=Telex, 6=Land mobile, 8=National, 9=Private, 10=Ermes, 14=Internet, 18=WAP Client ID</span>
 								</div>
 								<div class="form-group">
@@ -245,12 +280,12 @@
 								</div>
 								<div class="form-group">
 									<label>Priority</label>
-									<input type="text" name="priority" class="form-control" placeholder="Priority">
+									<input type="text" name="priority" class="form-control" placeholder="Priority" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">SMS-MT default priority if not set while sending it: 0, 1, 2 or 3</span>
 								</div>
 								<div class="form-group">
 									<label>Requeue Delay</label>
-									<input type="text" name="requeue_delay" class="form-control" placeholder="Requeue Delay">
+									<input type="text" name="requeue_delay" class="form-control" placeholder="Requeue Delay" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">Delay to be considered when requeuing a rejected message</span>
 								</div>
 								<div class="form-group">
@@ -265,12 +300,12 @@
 								</div>
 								<div class="form-group">
 									<label>Dlr. Expiry</label>
-									<input type="text" name="dlr_expiry" class="form-control" placeholder="Dlr. Expiry">
+									<input type="text" name="dlr_expiry" class="form-control" placeholder="Dlr. Expiry" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">When a SMS-MT is not acked, it will remain waiting in memory for dlr_expiry seconds, after this period, any received ACK will be ignored</span>
 								</div>
 								<div class="form-group">
 									<label>Submit Throughput</label>
-									<input type="text" name="submit_throughput" class="form-control" placeholder="Submit Throughput">
+									<input type="text" name="submit_throughput" class="form-control" placeholder="Submit Throughput" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">Active SMS-MT throttling in MPS (Messages per second), set to 0 (zero) for unlimited throughput</span>
 								</div>
 								<div class="form-group">
@@ -280,12 +315,26 @@
 								</div>
 								<div class="form-group">
 									<label>Coding</label>
-									<input type="text" name="coding" class="form-control" placeholder="Coding">
+									<select name="coding" class="form-control" placeholder="Coding">
+										<option value="0">SMSC Default</option>
+										<option value="1">IA5 ASCII</option>
+										<option value="2">Octet unspecified</option>
+										<option value="3">Latin1</option>
+										<option value="4">Octet unspecified common</option>
+										<option value="5">JIS</option>
+										<option value="6">Cyrillic</option>
+										<option value="7">ISO-8859-8</option>
+										<option value="8">UCS2</option>
+										<option value="9">Pictogram</option>
+										<option value="10">ISO-2022-JP</option>
+										<option value="13">Extended Kanji Jis</option>
+										<option value="14">KS C 5601</option>
+									</select>
 									<span class="help-block">Default coding of each SMS-MT if not set while sending it: 0=SMSC Default, 1=IA5 ASCII, 2=Octet unspecified, 3=Latin1, 4=Octet unspecified common, 5=JIS, 6=Cyrillic, 7=ISO-8859-8, 8=UCS2, 9=Pictogram, 10=ISO-2022-JP, 13=Extended Kanji Jis, 14=KS C 5601</span>
 								</div>
 								<div class="form-group">
 									<label>Enquire Link Interval</label>
-									<input type="text" name="elink_interval" class="form-control" placeholder="Enquire Link Interval">
+									<input type="text" name="elink_interval" class="form-control" placeholder="Enquire Link Interval" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" maxlength="8">
 									<span class="help-block">Enquire link interval (seconds)</span>
 								</div>
 								<div class="form-group">
@@ -295,12 +344,18 @@
 								</div>
 								<div class="form-group">
 									<label>RIPF</label>
-									<input type="text" name="ripf" class="form-control" placeholder="RIPF">
+									<select name="ripf" class="form-control" placeholder="RIPF">
+										<option value="0">Do not replace</option><option value="1">Replace</option>
+									</select>
 									<span class="help-block">Replace if present flag: 0=Do not replace, 1=Replace</span>
 								</div>
 								<div class="form-group">
-									<label>Dlr. MSJ ID</label>
-									<input type="text" name="dlr_msgid" class="form-control" placeholder="Dlr. MSJ ID">
+									<label>Dlr. Msg ID</label>
+									<select name="dlr_msgid" class="form-control" placeholder="Dlr. Msg ID">
+										<option value="0">submit_sm_resp and deliver_sm are Identical</option>
+										<option value="1">submit_sm_resp in hexadecimal, deliver_sm in decimal</option>
+										<option value="2">submit_sm_resp in decimal, deliver_sm in hexadecimal</option>
+									</select>
 									<span class="help-block">Indicates how to read msg id when receiving a receipt: 0=msg id is identical in submit_sm_resp and deliver_sm, 1=submit_sm_resp msg-id is in hexadecimal base, deliver_sm msg-id is in decimal base, 2=submit_sm_resp msg-id is in decimal base, deliver_sm msg-id is in hexadecimal base.</span>
 								</div>
 							</div>
