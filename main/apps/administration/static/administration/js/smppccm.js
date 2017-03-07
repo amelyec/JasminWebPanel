@@ -48,10 +48,10 @@ $(function(){
 			$("#edit_smppccm_modal input[name=cid]").val(data.cid);
 			$("#edit_smppccm_modal input[name=logfile]").val(data.logfile);
 			$("#edit_smppccm_modal input[name=logrotate]").val(data.logrotate);
-			$("#edit_smppccm_modal input[name=loglevel]").val(data.loglevel);
+			$("#edit_smppccm_modal select[name=loglevel]").val(data.loglevel);
 			$("#edit_smppccm_modal input[name=host]").val(data.host);
 			$("#edit_smppccm_modal input[name=port]").val(data.port);
-			$("#edit_smppccm_modal input[name=ssl]").val(data.ssl);
+			$("#edit_smppccm_modal select[name=ssl]").val(data.ssl);
 			$("#edit_smppccm_modal input[name=username]").val(data.username);
 			$("#edit_smppccm_modal input[name=password]").val(data.password);
 			$("#edit_smppccm_modal select[name=bind]").val(data.bind);
@@ -64,12 +64,12 @@ $(function(){
 			$("#edit_smppccm_modal select[name=con_fail_retry]").val(data.con_fail_retry);
 			$("#edit_smppccm_modal input[name=con_fail_delay]").val(data.con_fail_delay);
 			$("#edit_smppccm_modal input[name=src_addr]").val(data.src_addr);
-			$("#edit_smppccm_modal input[name=src_ton]").val(data.src_ton);
-			$("#edit_smppccm_modal input[name=src_npi]").val(data.src_npi);
-			$("#edit_smppccm_modal input[name=dst_ton]").val(data.dst_ton);
-			$("#edit_smppccm_modal input[name=dst_npi]").val(data.dst_npi);
-			$("#edit_smppccm_modal input[name=bind_ton]").val(data.bind_ton);
-			$("#edit_smppccm_modal input[name=bind_npi]").val(data.bind_npi);
+			$("#edit_smppccm_modal select[name=src_ton]").val(data.src_ton);
+			$("#edit_smppccm_modal select[name=src_npi]").val(data.src_npi);
+			$("#edit_smppccm_modal select[name=dst_ton]").val(data.dst_ton);
+			$("#edit_smppccm_modal select[name=dst_npi]").val(data.dst_npi);
+			$("#edit_smppccm_modal select[name=bind_ton]").val(data.bind_ton);
+			$("#edit_smppccm_modal select[name=bind_npi]").val(data.bind_npi);
 			$("#edit_smppccm_modal input[name=validity]").val(data.validity);
 			$("#edit_smppccm_modal input[name=priority]").val(data.priority);
 			$("#edit_smppccm_modal input[name=requeue_delay]").val(data.requeue_delay);
@@ -78,11 +78,11 @@ $(function(){
 			$("#edit_smppccm_modal input[name=dlr_expiry]").val(data.dlr_expiry);
 			$("#edit_smppccm_modal input[name=submit_throughput]").val(data.submit_throughput);
 			$("#edit_smppccm_modal input[name=proto_id]").val(data.proto_id);
-			$("#edit_smppccm_modal input[name=coding]").val(data.coding);
+			$("#edit_smppccm_modal select[name=coding]").val(data.coding);
 			$("#edit_smppccm_modal input[name=elink_interval]").val(data.elink_interval);
 			$("#edit_smppccm_modal input[name=def_msg_id]").val(data.def_msg_id);
-			$("#edit_smppccm_modal input[name=ripf]").val(data.ripf);
-			$("#edit_smppccm_modal input[name=dlr_msgid]").val(data.dlr_msgid);
+			$("#edit_smppccm_modal select[name=ripf]").val(data.ripf);
+			$("#edit_smppccm_modal select[name=dlr_msgid]").val(data.dlr_msgid);
 			$("#edit_smppccm_modal").modal('show');
 		}else if(act === "delete"){
 			var data = SMPPCCM_Dict[counter];
