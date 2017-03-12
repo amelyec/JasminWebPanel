@@ -13,7 +13,9 @@ from main.apps.core.exceptions import (JasminSyntaxError, JasminError,
 STANDARD_PROMPT = settings.STANDARD_PROMPT
 INTERACTIVE_PROMPT = settings.INTERACTIVE_PROMPT
 
-class UserViewSet(ViewSet):
+from .schema import SwaggerSchemaView
+
+class UserViewSet(SwaggerSchemaView):
     "ViewSet for managing *Jasmin* users (*not* Django auth users)"
     lookup_field = 'uid'
 
