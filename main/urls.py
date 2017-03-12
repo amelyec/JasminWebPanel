@@ -19,6 +19,9 @@ from django.contrib import admin
 from django.conf import settings
 from django.views.generic.base import RedirectView
 from rest_framework.routers import DefaultRouter
+from rest_framework_swagger.views import get_swagger_view
+
+schema_view = get_swagger_view(title='Jasmin Panel API')
 
 from main.apps.core.views import (
     GroupViewSet, UserViewSet, MORouterViewSet, SMPPCCMViewSet, HTTPCCMViewSet, MTRouterViewSet, FiltersViewSet
@@ -38,15 +41,8 @@ urlpatterns = [
     url(r'^administration/', include('main.apps.administration.urls')),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^api/', include(router.urls)),
+    url(r'^v1/', schema_view),
     url(r'^', include('main.apps.account.urls')),
 
     url(r'^$', RedirectView.as_view(url='/account',permanent=False),name='index'),
 ]
-
-if settings.SHOW_SWAGGER:
-    #urlpatterns += [url(r'^docs/', include('rest_framework_swagger.urls'))]
-    from rest_framework_swagger.views import get_swagger_view
-    schema_view = get_swagger_view(title='Pastebin API', url='/api')
-    urlpatterns += [url(r'^docs/', schema_view),]
-    # from main.apps.core.views.schema import SwaggerSchemaView
-    # urlpatterns += [url(r'^docs/', SwaggerSchemaView.as_view()),]
