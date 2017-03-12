@@ -9,7 +9,9 @@ from main.apps.core.exceptions import MissingKeyError, ActionFailed, ObjectNotFo
 STANDARD_PROMPT = settings.STANDARD_PROMPT
 INTERACTIVE_PROMPT = settings.INTERACTIVE_PROMPT
 
-class GroupViewSet(ViewSet):
+from .schema import SwaggerSchemaView
+
+class GroupViewSet(SwaggerSchemaView):
     "ViewSet for managing *Jasmin* user groups (*not* Django auth groups)"
     lookup_field = 'gid'
 
