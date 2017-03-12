@@ -15,7 +15,9 @@ from main.apps.core.exceptions import (JasminSyntaxError, JasminError,
 STANDARD_PROMPT = settings.STANDARD_PROMPT
 INTERACTIVE_PROMPT = settings.INTERACTIVE_PROMPT
 
-class MTRouterViewSet(ViewSet):
+from .schema import SwaggerSchemaView
+
+class MTRouterViewSet(SwaggerSchemaView):
     "Viewset for managing MT Routes"
     lookup_field = 'order'
 
