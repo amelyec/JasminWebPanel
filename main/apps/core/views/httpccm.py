@@ -13,8 +13,9 @@ from main.apps.core.exceptions import (
 STANDARD_PROMPT = settings.STANDARD_PROMPT
 INTERACTIVE_PROMPT = settings.INTERACTIVE_PROMPT
 
+from .schema import SwaggerSchemaView
 
-class HTTPCCMViewSet(ViewSet):
+class HTTPCCMViewSet(SwaggerSchemaView):
     "Viewset for managing HTTP Client Connectors"
     lookup_field = 'cid'
 
