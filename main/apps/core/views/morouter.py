@@ -15,8 +15,9 @@ from main.apps.core.exceptions import (JasminSyntaxError, JasminError,
 STANDARD_PROMPT = settings.STANDARD_PROMPT
 INTERACTIVE_PROMPT = settings.INTERACTIVE_PROMPT
 
+from .schema import SwaggerSchemaView
 
-class MORouterViewSet(ViewSet):
+class MORouterViewSet(SwaggerSchemaView):
     "Viewset for managing MO Routes"
     lookup_field = 'order'
 
