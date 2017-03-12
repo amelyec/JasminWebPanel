@@ -13,8 +13,9 @@ from main.apps.core.exceptions import (
 STANDARD_PROMPT = settings.STANDARD_PROMPT
 INTERACTIVE_PROMPT = settings.INTERACTIVE_PROMPT
 
+from .schema import SwaggerSchemaView
 
-class SMPPCCMViewSet(ViewSet):
+class SMPPCCMViewSet(SwaggerSchemaView):
     "Viewset for managing SMPP Client Connectors"
     lookup_field = 'cid'
 
