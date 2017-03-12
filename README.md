@@ -1,6 +1,8 @@
 # Jasmin Web Panel
-Jasmin SMS Web Interface for Jasmin SMS Gateway
+Jasmin SMS Web Interface and REST API for Jasmin SMS Gateway
 
+## Pre-requirements
+You must install [Jasmin SMS Gateway](https://github.com/jookies/jasmin) via official [document](http://docs.jasminsms.com/en/latest/installation/index.html)
 ## Installation
 Download and Extract folder
 We recommend installing in a virtualenv
@@ -32,8 +34,17 @@ To run for testing and development:
 ```
 This is slower, requires `DEBUG=True`, and is much less secure
 
+## Deployment
 To run on production:
 ```shell
-./run_cherrypy.py
+sudo apt-get install apache2 libapache2-mod-wsgi
+cp 000-default.conf /etc/apache2/sites-available/000-default.conf
+sudo a2enmod wsgi
+a2ensite 000-default.conf
+service apache2 restart
 ```
 This requires that you run the collectstatic command (see above) and you should have `DEBUG=False`.
+
+## Contributes
+
+Inspired by [Jasmin API](https://github.com/jookies/jasmin-api)
