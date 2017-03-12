@@ -15,7 +15,9 @@ from main.apps.core.exceptions import (JasminSyntaxError, JasminError,
 STANDARD_PROMPT = settings.STANDARD_PROMPT
 INTERACTIVE_PROMPT = settings.INTERACTIVE_PROMPT
 
-class FiltersViewSet(ViewSet):
+from .schema import SwaggerSchemaView
+
+class FiltersViewSet(SwaggerSchemaView):
     "Viewset for managing Filters"
     lookup_field = 'fid'
 
