@@ -30,18 +30,18 @@ TELNET_PW = 'jclipwd'
 
 To run for testing and development: 
 ```shell
-./manage.py runserver
+$ ./manage.py runserver
 ```
 This is slower, requires `DEBUG=True`, and is much less secure
 
 ## Deployment
 To run on production:
 ```shell
-sudo apt-get install apache2 libapache2-mod-wsgi
-cp 000-default.conf /etc/apache2/sites-available/000-default.conf
-sudo a2enmod wsgi
-a2ensite 000-default.conf
-service apache2 restart
+$ sudo apt-get install apache2 libapache2-mod-wsgi
+$ cp 000-default.conf /etc/apache2/sites-available/000-default.conf
+$ sudo a2enmod wsgi
+$ a2ensite 000-default.conf
+$ service apache2 restart
 ```
 This requires that you run the collectstatic command (see above) and you should have `DEBUG=False`.
 
