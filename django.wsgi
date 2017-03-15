@@ -1,4 +1,4 @@
-mport os
+import os
 import sys
 import site
 
