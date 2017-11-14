@@ -5,7 +5,7 @@ SETTINGS_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.abspath(os.path.dirname(os.path.dirname(__file__)))
 SECRET_KEY = '76#ff@d_b)_+l$q^1jk$psqp8u@qyq1x!go-v5dfrfs!%r2+_c'
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
 
 LOGIN_URL = '/'
 
@@ -53,20 +53,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'main.wsgi.application'
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    },
-    # // for mysql connections.
-    # 'default': {
-    #     "NAME": "jasmin-smpp",
-    #     "HOST": "127.0.0.1",
-    #     "ENGINE": "django.db.backends.mysql",
-    #     "USER": "root",
-    #     "PASSWORD": "JasminSMS",
-    # }
-}
+db_engine = os.environ.get('DB_ENGINE', 'sqlite')
+
+if db_engine == 'postgres':
+    DATABASES = {
+        'default': {
+            "NAME": os.environ.get('DB_NAME', 'jasmin-smpp'),
+            "HOST": os.environ.get('DB_HOST'),
+            "ENGINE": "django.db.backends.postgresql",
+            "USER": os.environ.get('DB_USER'),
+            "PASSWORD": os.environ.get('DB_PASSWORD')
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
