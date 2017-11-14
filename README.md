@@ -3,8 +3,6 @@
 Environment variables
 
 ```
-ADMIN_USER_DEFAULT_PASSWORD
-
 DB_ENGINE='postgres' (default: sqlite)
 DB_NAME= (default: jasmin-smpp)
 DB_HOST= (No Default)
@@ -22,7 +20,7 @@ Build and Run docker
 ```shell
 docker build --rm -t local/jasminwebpanel:master ./
 
-docker run --net=zdeploystack_default -p 8000:8000 -e DB_ENGINE=postgres -e DB_HOST=postgres \
+docker run -p 8000:8000 -e DB_ENGINE=postgres -e DB_HOST=postgres \
 	 -e DB_USER=airflow -e DB_PASSWORD=airflow \
 	 -e JASMIN_HOST=jasmin -e JASMIN_PORT=8990 -e JASMIN_USERNAME=jcliadmin -e JASMIN_PASSWORD=jclipwd \
 	 -it local/jasminwebpanel:master
