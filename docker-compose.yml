@@ -11,7 +11,7 @@ services:
       - "8990:8990"
 
   jasminweb:
-    image: local/jasminwebpanel:master
+    image: docker-registry.zoona.io/engineers/jasminwebpanel:master
     container_name: jasmin_web
     environment:
       - DB_ENGINE=postgres

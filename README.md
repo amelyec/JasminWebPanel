@@ -15,6 +15,17 @@ JASMIN_USERNAME= (default: jcliadmin)
 JASMIN_PASSWORD= (default: jclipwd)
 ```
 
+Build and Run docker
+
+```shell
+docker build --rm -t local/jasminwebpanel:master ./
+
+docker run --net=zdeploystack_default -p 8000:8000 -e DB_ENGINE=postgres -e DB_HOST=postgres \
+	 -e DB_USER=airflow -e DB_PASSWORD=airflow \
+	 -e JASMIN_HOST=jasmin -e JASMIN_PORT=8990 -e JASMIN_USERNAME=jcliadmin -e JASMIN_PASSWORD=jclipwd \
+	 -it local/jasminwebpanel:master
+```
+
 # Jasmin Web Panel
 Jasmin SMS Web Interface and REST API for Jasmin SMS Gateway
 
