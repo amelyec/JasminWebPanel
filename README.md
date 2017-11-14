@@ -3,6 +3,8 @@
 Environment variables
 
 ```
+ADMIN_USER_DEFAULT_PASSWORD
+
 DB_ENGINE='postgres' (default: sqlite)
 DB_NAME= (default: jasmin-smpp)
 DB_HOST= (No Default)
