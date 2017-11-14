@@ -1,14 +1,14 @@
 ################################################################################
 #         Settings most likely to need overriding in local_settings.py         #
 ################################################################################
+import os
 
 #Jasmin telnet defaults, override in local_settings.py
-TELNET_HOST = '127.0.0.1'
-TELNET_PORT = 8990
-TELNET_USERNAME = 'jcliadmin'
-TELNET_PW = 'jclipwd'  # no alternative storing as plain text
+TELNET_HOST = os.environ.get('JASMIN_HOST', 'jasmin')
+TELNET_PORT = int(os.environ.get('JASMIN_PORT', 8990))
+TELNET_USERNAME = os.environ.get('JASMIN_USERNAME', 'jcliadmin')
+TELNET_PW = os.environ.get('JASMIN_PASSWORD', 'jclipwd')  # no alternative storing as plain text
 TELNET_TIMEOUT = 10  # reasonable value for intranet.
-
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

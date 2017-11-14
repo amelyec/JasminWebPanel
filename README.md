@@ -1,3 +1,20 @@
+# Docker usage
+
+Environment variables
+
+```
+DB_ENGINE='postgres' (default: sqlite)
+DB_NAME= (default: jasmin-smpp)
+DB_HOST= (No Default)
+DB_USER= (No Default)
+DB_PASSWORD= (No Default)
+
+JASMIN_HOST= (default: jasmin)
+JASMIN_PORT= (default: 8990
+JASMIN_USERNAME= (default: jcliadmin)
+JASMIN_PASSWORD= (default: jclipwd)
+```
+
 # Jasmin Web Panel
 Jasmin SMS Web Interface and REST API for Jasmin SMS Gateway
 
